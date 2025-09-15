@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: puerta_del_sol_paez
+Version: 0.1.0
+Summary: Paquete para análisis de datos de Puerta del Sol
+Home-page: https://github.com/Pilar-Paez
+Author: Maria Pilar Paez Guillan
+Author-email: mpaez04@ucm.es
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Dynamic: author
+Dynamic: author-email
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-python
+Dynamic: summary
+
+Paquete para análisis de datos del restaurante Puerta del Sol

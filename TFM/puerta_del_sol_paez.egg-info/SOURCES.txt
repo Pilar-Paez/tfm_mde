@@ -1,0 +1,9 @@
+setup.py
+puerta_del_sol/__init__.py
+puerta_del_sol/funciones.py
+puerta_del_sol/lectura.py
+puerta_del_sol/limpieza.py
+puerta_del_sol_paez.egg-info/PKG-INFO
+puerta_del_sol_paez.egg-info/SOURCES.txt
+puerta_del_sol_paez.egg-info/dependency_links.txt
+puerta_del_sol_paez.egg-info/top_level.txt
