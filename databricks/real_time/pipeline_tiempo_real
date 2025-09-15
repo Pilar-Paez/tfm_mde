@@ -1,0 +1,39 @@
+resources:
+  jobs:
+    Pipeline_tiempo_real:
+      name: Pipeline_tiempo_real
+      schedule:
+        quartz_cron_expression: 33 0 0 * * ?
+        timezone_id: Europe/Belgrade
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: Simulacion_datos_diarios
+          notebook_task:
+            notebook_path: /Workspace/Users/ppaez51@gmail.com/Confluent
+            source: WORKSPACE
+          existing_cluster_id: 0909-123423-zz33cyne
+          max_retries: 2
+          min_retry_interval_millis: 300000
+          retry_on_timeout: true
+        - task_key: Ingesta_y_analitica
+          depends_on:
+            - task_key: Simulacion_datos_diarios
+          notebook_task:
+            notebook_path: /Workspace/Users/ppaez51@gmail.com/Ingesta_analitica_real_time
+            source: WORKSPACE
+          existing_cluster_id: 0909-123423-zz33cyne
+          max_retries: 2
+          min_retry_interval_millis: 300000
+          retry_on_timeout: true
+        - task_key: Bronze_to_silver
+          depends_on:
+            - task_key: Ingesta_y_analitica
+          notebook_task:
+            notebook_path: /Workspace/Users/ppaez51@gmail.com/Bronze_to_silver_real_time
+            source: WORKSPACE
+          existing_cluster_id: 0909-123423-zz33cyne
+          max_retries: 2
+          min_retry_interval_millis: 300000
+          retry_on_timeout: true
+      queue:
+        enabled: true
