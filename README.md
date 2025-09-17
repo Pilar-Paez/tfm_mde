@@ -32,3 +32,23 @@ Encontramos tres subcarpetas.
 
 ##### Carpeta batch
 
+Contiene el código referente al flujo de información batch: lectura, limpieza, procesamiento y análisis.
+
+- Bronze_to_silver.ipynb: cuaderno de Databricks dedicado a la lectura de los archivos desde la capa bronze del datalake armado en Azure Data Lake Gen 2, a su limpieza y a la escritura en formato delta en la capa silver de dicho datalake.
+- Silver_to_gold.ipynb: cuaderno de Databricks dedicado a la lectura de los archivos desde la capa silver del datalake, a su procesamiento para dejarlos preparados para el análisis, y a su escritura en la capa gold.
+- Gold_calculations.ipynb: cuaderno de Databricks dedicado a hacer cálculos en la capa gold, encuadrados en su mayor parte en el análisis exploratorio de datos.
+- pipeline_batch: descripción de la canalización que reúne los tres cuadernos anteriores para automatizar su ejecución.
+- ML.ipynb: cuaderno de Databricks con los diferentes experimentos de machine learning a los que sometemos los datos gold. Incluye la carga del mejor modelo y una predicción.
+
+##### Carpeta real_time
+
+Contiene el código referente a la simulación de datos en tiempo real y a su lectura, limpieza y análisis.
+
+- Confluent.ipynb: cuaderno de Databricks con la creación de un topic en Confluent y de un stream de Kafka, imitando los pedidos de los clientes durante un día.
+- Ingesta_analitica_real_time.ipynb: cuaderno de Databricks dedicado a la lectura del stream simulado, a su escritura en la capa bronze del datalake y a su análisis. Dicho análisis consiste en cotejar cuándo el número de pedidos de cada producto determinado supera un determinado umbral, y enviar mensajes de alerta en un nuevo topic de Kafka creado previamente.
+- Bronze_to_silver_real_time.ipynb: cuaderno de Databricks dedicado a transformar la información en tiempo real al mismo formato de la información batch (relativa a las consumiciones diarias) para poder almacenar ambas de modo conjunto.
+- pipeline_tiempo_real: descripción de la canalización que reúne los tres cuadernos anteriores para automatizar su ejecución.
+
+##### Carpeta best_model
+
+Contiene el artefacto del mejor modelo obtenido en los experimentos de machine learning (modelo gradient boosting con todas las variables disponibles), necesario para poder replicar el experimento con posterioridad.
